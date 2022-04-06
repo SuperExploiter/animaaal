@@ -114,7 +114,7 @@ btns:Button("Owner + Scripter", function()
 	end
 end)
 
-btns:Button("Copy To Clipboard, function()
+btns:Button("Copy To Clipboard", function()
     if setclipboard then 
         setclipboard("Xester#7709")
     elseif toClipboard then 
