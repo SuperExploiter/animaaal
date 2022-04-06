@@ -1,0 +1,123 @@
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
+
+local win = DiscordLib:Window("Soggy Hub ")
+
+local serv = win:Server("Animal Simulator V1.1", "")
+
+local btns = serv:Channel("Main")
+
+local hum = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+btns:Toggle("Chest Farm / Infinite Levels",false, function(bool)
+    getgenv().chestfarm = bool
+    
+    while chestfarm do 
+        wait(2)
+        for i,v in pairs(game:GetService("Workspace").Treasures:GetChildren()) do 
+            wait()
+            if v.ClassName == "MeshPart" then 
+                game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = v.CFrame}):Play()
+                print(bool)
+            end
+        end
+    end
+end)
+
+btns:Seperator()
+
+btns:Toggle("Get All Skins Farm",false, function(bool)
+    getgenv().skinfarm = bool
+    
+    while skinfarm do 
+        wait(2)
+        for i,v in pairs(game:GetService("Workspace").Treasures:GetChildren()) do 
+            wait()
+            if v.ClassName == "MeshPart" then 
+                game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),{CFrame = v.CFrame}):Play()
+                print(bool)
+            end
+        end
+    end
+end)
+
+btns:Seperator()
+
+btns:Toggle("Damage Everyone",false, function(bool)
+         for i,v in pairs(game.Players:GetChildren()) do
+           for i,p in pairs(game.Workspace:GetChildren()) do
+               if p.Name == v.Name and p.Name ~= game.Players.LocalPlayer.Name then
+               game:GetService("ReplicatedStorage").jdskhfsIIIllliiIIIdchgdIiIIIlIlIli:FireServer(p.Humanoid,1)
+            end
+        end
+    end
+end)
+
+local btns = serv:Channel("Player")
+
+local sldr = btns:Slider("Walkspeed!", 20, 200, 0, function(t)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = t
+end)
+
+btns:Seperator()
+
+local sldr = btns:Slider("JumpPower!", 20, 500, 0, function(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = t
+end)
+
+btns:Toggle("Damage Everyone",false, function(bool)
+	if bool then wait()
+	local Cam = workspace.CurrentCamera
+	local Pos, Char = Cam.CFrame, speaker.Character
+	local Human = Char and Char.FindFirstChildWhichIsA(Char, "Humanoid")
+	local nHuman = Human.Clone(Human)
+	nHuman.Parent, speaker.Character = Char, nil
+	nHuman.SetStateEnabled(nHuman, 15, false)
+	nHuman.SetStateEnabled(nHuman, 1, false)
+	nHuman.SetStateEnabled(nHuman, 0, false)
+	nHuman.BreakJointsOnDeath, Human = true, Human.Destroy(Human)
+	speaker.Character, Cam.CameraSubject, Cam.CFrame = Char, nHuman, wait() and Pos
+	nHuman.DisplayDistanceType = Enum.HumanoidDisplayDistanceType.None
+	local Script = Char.FindFirstChild(Char, "Animate")
+	if Script then
+		Script.Disabled = true
+		wait()
+		Script.Disabled = false
+	end
+	nHuman.Health = nHuman.MaxHealth
+	end
+	end)
+
+local btns = serv:Channel("Important!")
+
+btns:Button("Owner + Scripter", function()
+    DiscordLib:Notification("Notification", "Made By Xester#7709", "That Guy Is So Pro")
+        	local http = game:GetService('HttpService') 
+	if toClipboard then
+		toClipboard('shut')
+	else
+	end
+	local req = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or getgenv().request or request
+	if req then
+		req({
+			Url = 'http://127.0.0.1:6463/rpc?v=1',
+			Method = 'POST',
+			Headers = {
+				['Content-Type'] = 'application/json',
+				Origin = 'https://discord.com'
+			},
+			Body = http:JSONEncode({
+				cmd = 'INVITE_BROWSER',
+				nonce = http:GenerateGUID(false),
+				args = {code = 'GYrTQEryum'}
+			})
+		})
+	end
+end)
+
+btns:Button("Copy To Clipboard, function()
+    if setclipboard then 
+        setclipboard("Xester#7709")
+    elseif toClipboard then 
+        toClipboard("Xester#7709")
+    end
+end)
